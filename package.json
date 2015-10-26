@@ -1,0 +1,16 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "portfolio to display my work",
+  "main": "index.js",
+  "dependencies": {
+    "browserify": "^12.0.0",
+    "express": "^4.13.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rSmith",
+  "license": "ISC"
+}
