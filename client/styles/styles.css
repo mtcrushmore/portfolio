@@ -1,3 +1,30 @@
+.text {
+  font-family: 'Volkhov', serif;
+  color: white;
+  margin: 5%;
+}
+
+.black {
+  color:black;
+}
+
+.grid-sizer,
+.grid-item {
+  width: 40%;
+  float: left;
+  max-width: 100%;
+}
+
+#projects {
+  background: rgba(255,255,255, 0.6);
+  display:inline-block;
+}
+
+.img-thumbnail {
+  opacity: 1;
+  margin: 5%;
+}
+
 path.arc {
   cursor: move;
   fill: #fff;
@@ -7,17 +34,7 @@ path.arc {
   fill: #fff;
   stroke: steelblue;
   stroke-width: 1.5px;
-}
-
-.node {
-  font-size: 10px;
-  pointer-events: none;
-}
-
-.link {
-  fill: none;
-  stroke: #ccc;
-  stroke-width: 0px;
+  cursor: pointer;
 }
 
 img {
@@ -26,6 +43,35 @@ img {
   display: block;
 }
 
-/*body {
-  background: rgba(30,30,30,1.00);
-}*/
+#welcome, #projects, #about {
+  /*width: 120%;*/
+  border-style: solid;
+  border-color: white;
+  border-radius: 10px;
+  margin: 5%;
+}
+#welcome {
+  background: rgba(30,30,30,0.9);
+  height:100%;
+  /*display: inline-block;*/
+}
+
+#d3bubbleChart {
+  z-index: 1;
+  margin-top: -10%;
+  position: absolute;
+}
+
+#about {
+  background: rgba(255,255,255, 0.6);
+}
+
+#contact {
+  margin-bottom:5%;
+  margin-left:10%;
+}
+
+body {
+  /*background-image: url('../assets/background2.jpg');*/
+  background-color: #172A40;
+}

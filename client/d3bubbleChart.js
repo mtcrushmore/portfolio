@@ -1,54 +1,41 @@
+
 var d3data = {
       title: 'projection1',
       priority: 10,
       img: 'https://www.ibiblio.org/wm/paint/auth/kandinsky/kandinsky.comp-8.jpg',
       children: [
         {
-          title: 'immedia',
-          url: 'https://www.immedia.xyz',
-          description: 'your real-time encyclopedia',
-          img: './assets/immedia.png',
-          priority: 1,
-        },
-        {
-          title: 'koupler',
+          title: 'about',
           url: 'https://www.immedia.xyz',
           description: 'a meeting site for couples', 
-          img: './assets/koupler.png',
-          priority: 1.5,
-        },
-        {
-          title: 'deepspace',
-          url: 'https://mtcrushmore.github.io',
-          description: 'solar system creator', 
-          img: './assets/deepspace.png',
+          img: './assets/background2.jpg',
           priority: 2,
         },
         {
-          title: 'fudwize',
-          url: 'https://fudwize.herokuapp.xyz',
-          description: 'connecting foodbanks and restaurants', 
-          img: './assets/fudwize.png',
+          title: 'contact',
+          url: 'https://mtcrushmore.github.io',
+          description: 'solar system creator', 
+          img: './assets/background2.jpg',
           priority: 1.5,
         },
         {
-          title: 'gram',
-          url: 'https://github.com/mtcrushmore/gram',
-          description: 'real-time whiteboard and chat', 
-          img: './assets/gram.png',
-          priority: 2.5,
+          title: 'projects',
+          url: 'https://www.immedia.xyz',
+          description: 'your real-time encyclopedia',
+          img: './assets/background2.jpg',
+          priority: 1,
         },
       ]
 };
 
-var width = window.innerWidth;
+var width = window.innerWidth/1.2;
 
 var bubble = d3.layout.pack()
   .sort(null)
-  .size([width, width])
+  .size([width/1.5, width/1.5])
   .padding(1.5)
 
-var svg = d3.select('#d3chart').append('svg')
+var svg = d3.select('#d3bubbleChart').append('svg')
   .attr({
     height: width,
     width: width,
@@ -61,16 +48,14 @@ var node = svg.selectAll('.node')
   .data(bubble.nodes(classes(d3data))
     .filter(function(d) { return !d.children; }))
   .enter().append('g')
-  .on('click', function(d) {
-    console.log(d);
-  })
   .attr({
     class: 'node',
     transform: function(d) { return 'translate(' + d.x + ',' + d.y + ')'; }
   })
 
+
 node.append('circle')
-  .attr('r', function(d) { return 100/d.value; })
+  .attr('r', function(d) { return 130/d.value; })
   .style('fill', function(d) {
     defs.append('svg:pattern')
       .attr('id', 'tile-img' + d.title)
@@ -81,16 +66,48 @@ node.append('circle')
         if (d.img) { return d.img; }
       })
       .attr({
-        x: -70,
-        y: -70,
-        width: 300,
-        height: 300,
+        x: 0,
+        y: -50,
+        width: 400,
+        height: 400,
       })
       return 'url(#tile-img' + d.title + ')'
   })
+  // .on('mouseover', function(d) {
+  //   var line = d3.svg.line()
+  //     .x(function(d) { return d.x})
+  //     .y(function(d) { return d.y})
+  //     .interpolate('linear')
+  //   svg.append('path')
+  //     .transition()
+  //     .duration(500)
+  //     .delay(200)
+  //     .attr('d', line([ { 'x' : d.x, 'y' : d.y }, { 'x' : d.x + 100, 'y' : d.y - 100 } ]))
+  //     .attr('stroke', 'white')
+  //     .attr('stroke-width', 2)
+  //     .style('stroke-dasharray', ('3, 3'))
+  // })
+  // .on('mouseout', function(d) {
+  //   d3.selectAll('path').remove();
+  // })
   .on('click', function(d) {
-    console.log(d);
+    element = document.getElementById(d.title)
+    alignWithTop = true;
+    element.scrollIntoView(alignWithTop);
   })
+  
+node.append('text')
+  .attr({
+    class: 'text',
+    class: 'nodeText'
+  })
+  .attr({
+    x: function(d) { return -20 },
+    y: function(d) { return + (150/d.value) + 20 }, 
+    stroke: 'white',
+  })
+  .text(function(d) { return d.title })
+
 
 function classes(root) {
   var classes = [];
