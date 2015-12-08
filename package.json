@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "browserify": "^12.0.0",
+    "cors": "^2.7.1",
     "express": "^4.13.3"
   },
   "devDependencies": {},
