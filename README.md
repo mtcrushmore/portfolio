@@ -1,2 +1,3 @@
 # portfolio
-a site to show some of my work
+A site to show off some of my work.
+Please visit ryansmithportfolio.github.io to see the product for yourself!
